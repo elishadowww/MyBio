@@ -1,0 +1,561 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --gray-light: #f5f5f5;
+    --gray-medium: #666666;
+    --gray-dark: #333333;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--black);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: var(--white);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 1000;
+    padding: 1.5rem 3rem;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 3rem;
+}
+
+.nav-link {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--black);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 55px;
+    height: 55px;
+    background: var(--black);
+    color: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 999;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.back-to-top.pop {
+    animation: bubblePop 0.4s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
+}
+
+.back-to-top:hover {
+    transform: scale(1.1) translateY(-5px);
+    background: var(--white);
+    color: var(--black);
+}
+
+@keyframes bubblePop {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    30% {
+        transform: scale(1.3);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.4;
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.2),
+                    0 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    70% {
+        transform: scale(1.6);
+        opacity: 0.2;
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.1),
+                    0 0 0 30px rgba(0, 0, 0, 0.05);
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+        box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+    }
+}
+
+/* Landscape Sections */
+.landscape {
+    min-height: 100vh;
+    padding: 6rem 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* First Landscape - Introduction */
+.landscape-1 {
+    background: var(--white);
+    color: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    padding: 6rem 5rem;
+}
+
+.character-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.character-box {
+    width: 320px;
+    height: 420px;
+    background: transparent;
+    border: 3px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.character-box:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+    transform: scale(1.02);
+}
+
+.bio-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.intro-text {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--gray-dark);
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--black);
+    letter-spacing: -0.02em;
+    margin: 1rem 0;
+    white-space: nowrap;
+}
+
+.bio-description {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--gray-medium);
+    font-weight: 300;
+    max-width: 90%;
+}
+
+/* Second Landscape - Resume Roadmap */
+.landscape-2 {
+    background: var(--white);
+    flex-direction: column;
+    padding: 6rem 2rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--black);
+    margin-bottom: 4rem;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.roadmap-container {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+}
+
+.character-runner {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 10;
+    transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.character-box.small {
+    width: 60px;
+    height: 60px;
+    background: var(--black);
+    border-radius: 50%;
+    font-size: 2rem;
+    border: none;
+}
+
+.roadmap-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4rem 2rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--black) var(--gray-light);
+}
+
+.roadmap-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.roadmap-scroll::-webkit-scrollbar-track {
+    background: var(--gray-light);
+}
+
+.roadmap-scroll::-webkit-scrollbar-thumb {
+    background: var(--black);
+    border-radius: 0;
+}
+
+.roadmap {
+    display: flex;
+    gap: 4rem;
+    position: relative;
+    min-width: max-content;
+}
+
+.roadmap::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--black);
+    z-index: 1;
+}
+
+.roadmap-item {
+    position: relative;
+    min-width: 300px;
+}
+
+.roadmap-marker {
+    width: 16px;
+    height: 16px;
+    background: var(--black);
+    border: 4px solid var(--white);
+    border-radius: 50%;
+    position: absolute;
+    top: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 2px var(--black);
+}
+
+.roadmap-content {
+    background: var(--white);
+    padding: 2.5rem;
+    border: 2px solid var(--black);
+    border-radius: 0;
+    margin-top: 80px;
+    transition: all 0.3s ease;
+}
+
+.roadmap-content:hover {
+    transform: translateY(-8px);
+    box-shadow: 8px 8px 0 var(--black);
+}
+
+.roadmap-content h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.roadmap-content .date {
+    color: var(--gray-medium);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.roadmap-content p {
+    color: var(--gray-dark);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* Third Landscape - Projects */
+.landscape-3 {
+    background: var(--gray-light);
+    flex-direction: column;
+    padding: 6rem 2rem;
+    overflow: hidden;
+}
+
+.projects-container {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    perspective: 1000px;
+    height: 600px;
+}
+
+.scroll-btn {
+    width: 55px;
+    height: 55px;
+    background: var(--black);
+    color: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 0;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.scroll-btn:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+.projects-scroll {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.projects-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.projects-grid {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-card {
+    position: absolute;
+    width: 350px;
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.project-card.center {
+    width: 450px;
+    z-index: 10;
+    opacity: 1;
+}
+
+.project-card:not(.center) {
+    opacity: 0.6;
+    z-index: 5;
+}
+
+.project-card:hover:not(.center) {
+    opacity: 0.8;
+}
+
+.project-preview {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: var(--gray-light);
+    border-bottom: 2px solid var(--black);
+}
+
+.project-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-preview img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    padding: 2rem;
+}
+
+.project-info h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.project-info p {
+    color: var(--gray-dark);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background: var(--black);
+    color: var(--white);
+    padding: 0.4rem 1rem;
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.project-link {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.project-link:hover {
+    transform: translateX(8px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .landscape-1 {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 6rem 2rem;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .intro-text {
+        font-size: 1.4rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .character-box {
+        width: 200px;
+        height: 300px;
+    }
+
+    .project-card {
+        width: 320px;
+    }
+
+    .back-to-top {
+        bottom: 1rem;
+        left: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+}

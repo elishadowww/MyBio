@@ -262,13 +262,14 @@ body {
 .roadmap-scroll {
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 2rem 2rem;
     scrollbar-width: thin;
     scrollbar-color: var(--black) var(--gray-light);
+    margin-bottom: 2rem;
 }
 
 .roadmap-scroll::-webkit-scrollbar {
-    height: 6px;
+    height: 10px;
 }
 
 .roadmap-scroll::-webkit-scrollbar-track {
@@ -278,6 +279,10 @@ body {
 .roadmap-scroll::-webkit-scrollbar-thumb {
     background: var(--black);
     border-radius: 0;
+}
+
+.roadmap-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-dark);
 }
 
 .roadmap {

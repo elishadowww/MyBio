@@ -221,3 +221,84 @@ window.addEventListener('scroll', () => {
         bioContent.style.transform = `translateY(${scrolled * 0.3}px)`;
     }
 });
+
+// Download Resume Functionality
+const downloadResumeLink = document.getElementById('downloadResumeLink');
+
+if (downloadResumeLink) {
+    downloadResumeLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link behavior
+
+        // Create resume content
+        const resumeContent = `
+ELISHA TIONG PEI PEI
+Software Engineering Student
+Email: Contact via LinkedIn
+LinkedIn: https://www.linkedin.com/in/elisha-tiong-pei-pei
+GitHub: https://github.com/elishadowww
+
+========================================
+PROFESSIONAL SUMMARY
+========================================
+Software engineer who enjoys solving problems, creating smooth user experiences, and constantly learning new tools.
+Passionate about building things that help people in small but meaningful ways.
+
+========================================
+EDUCATION
+========================================
+
+DEGREE IN SOFTWARE SYSTEM DEVELOPMENT
+2025 - Present
+Tunku Abdul Rahman University Management & Technology, Sabah
+Current CGPA: 3.8005
+
+DIPLOMA IN SOFTWARE ENGINEERING
+2023 - 2025
+Tunku Abdul Rahman University Management & Technology, Sabah
+Graduated with CGPA: 3.6485
+
+SPM (Malaysian Certificate of Education)
+2023
+SMJK SHAN TAO, Likas
+Result: 1A+, 2A, 3A-, 3B+
+
+SECONDARY SCHOOL
+2018 - 2023
+SMJK SHAN TAO, Likas
+
+PRIMARY SCHOOL
+2011 - 2017
+SJKC SHAN TAO
+
+========================================
+WORK EXPERIENCE
+========================================
+
+INTERNSHIP - WEBSITE DEVELOPER AND PRODUCT MARKETING
+2023 - 2025
+Softinn Solutions Sdn Bhd (Remote)
+
+========================================
+PERSONAL INFORMATION
+========================================
+Date of Birth: January 13, 2006
+Place of Birth: Sabah, Kota Kinabalu
+
+========================================
+Generated from: Elisha Tiong Pei Pei Portfolio
+Date: ${new Date().toLocaleDateString()}
+========================================
+        `.trim();
+
+        // Create blob and download
+        const blob = new Blob([resumeContent], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Elisha_Tiong_Resume.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    });
+}

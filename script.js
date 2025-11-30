@@ -55,29 +55,29 @@ const roadmapScroll = document.querySelector('.roadmap-scroll');
 const roadmapMarkers = document.querySelectorAll('.roadmap-marker');
 
 if (roadmapScroll && roadmapMarkers.length > 0) {
-    let currentMarkerIndex = 0;
-
-    // Function to update character to exact marker position
+    // Function to update character to follow scroll smoothly
     function updateCharacterPosition() {
         const scrollLeft = roadmapScroll.scrollLeft;
         const maxScroll = roadmapScroll.scrollWidth - roadmapScroll.clientWidth;
 
-        // Calculate which marker index based on scroll progress
+        // Calculate scroll progress (0 to 1)
         const scrollProgress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
-        const targetIndex = Math.round(scrollProgress * (roadmapMarkers.length - 1));
-
-        // Only update if marker changed
-        if (targetIndex !== currentMarkerIndex) {
-            currentMarkerIndex = targetIndex;
-        }
 
         // Get character width for centering
         const characterWidth = runningCharacter.querySelector('.character-box.small').offsetWidth;
 
-        // Position character at the exact center of current marker
-        const currentMarker = roadmapMarkers[currentMarkerIndex];
-        const markerCenter = currentMarker.offsetLeft + (currentMarker.offsetWidth / 2);
-        const characterLeft = markerCenter - (characterWidth / 2);
+        // Get first and last marker positions
+        const firstMarker = roadmapMarkers[0];
+        const lastMarker = roadmapMarkers[roadmapMarkers.length - 1];
+
+        // Calculate the range between first and last marker centers
+        const firstMarkerCenter = firstMarker.offsetLeft + (firstMarker.offsetWidth / 2);
+        const lastMarkerCenter = lastMarker.offsetLeft + (lastMarker.offsetWidth / 2);
+        const markerRange = lastMarkerCenter - firstMarkerCenter;
+
+        // Calculate character position based on scroll progress
+        const characterCenter = firstMarkerCenter + (scrollProgress * markerRange);
+        const characterLeft = characterCenter - (characterWidth / 2);
 
         // Position character on the roadmap line
         runningCharacter.style.left = `${characterLeft}px`;

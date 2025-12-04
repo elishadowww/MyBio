@@ -168,7 +168,7 @@ body {
     width: 320px;
     height: 420px;
     background: transparent;
-    border: 3px solid var(--black);
+    border: none;
     border-radius: 0;
     display: flex;
     align-items: center;
@@ -558,7 +558,7 @@ body {
     min-height: 250px;
     overflow: hidden;
     background: var(--gray-light);
-    border-bottom: 2px solid var(--black);
+    border-bottom: none;
     flex-shrink: 0;
 }
 

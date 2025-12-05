@@ -24,6 +24,9 @@ body {
     background: var(--white);
     font-weight: 400;
     letter-spacing: -0.01em;
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 /* Navigation Bar */
@@ -141,11 +144,15 @@ body {
 
 /* Landscape Sections */
 .landscape {
+    height: 100vh;
     min-height: 100vh;
     padding: 6rem 2rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    overflow: hidden;
 }
 
 /* First Landscape - Introduction */
@@ -156,6 +163,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
     padding: 6rem 5rem;
+    box-sizing: border-box;
 }
 
 .character-placeholder {
@@ -271,6 +279,7 @@ body {
     background: var(--white);
     flex-direction: column;
     padding: 6rem 2rem;
+    box-sizing: border-box;
 }
 
 .section-title {
@@ -458,6 +467,7 @@ body {
     flex-direction: column;
     padding: 6rem 2rem;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .projects-container {
